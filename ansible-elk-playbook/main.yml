@@ -2,8 +2,8 @@
 #
 # Playbook to install the ELK stack + Beats
 #
-- hosts: localhost
-  remote_user: ubuntu
+- hosts: node
+  remote_user: root
   become: yes
   become_user: root
   roles:
