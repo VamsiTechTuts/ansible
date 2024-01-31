@@ -2,8 +2,7 @@
 #
 # Playbook to install the ELK stack + Beats
 #
-- name: Install ELK
-  hosts: localhost
+- hosts: node
   remote_user: root
   become: yes
   become_user: root
@@ -12,6 +11,6 @@
   - { role: elasticsearch }
   - { role: logstash }
   - { role: kibana }
- # - { role: metricbeat }
- # - { role: some-data }
- # - { role: restart-services }
+  - { role: metricbeat }
+  - { role: some-data }
+  - { role: restart-services }
