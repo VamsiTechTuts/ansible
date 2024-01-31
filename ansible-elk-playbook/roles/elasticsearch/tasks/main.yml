@@ -20,22 +20,13 @@
 
 - name: Adding Elasticsearch repo
   apt_repository:
-   repo: deb https://artifacts.elastic.co/packages/8.x/apt stable main 
+   repo: deb https://artifacts.elastic.co/packages/7.x/apt stable main 
    state: present
 
 - name: Install Elasticsearch
   apt:
    name: elasticsearch
    update_cache: yes
-  register: installation_output
-
-- name: Capture specific lines from installation logs
-  set_fact:
-    captured_logs: "{{ installation_output.stdout_lines | select('match', 'Authentication and authorization|TLS for the transport and HTTP layers|The generated password for the elastic built-in superuser') | list }}"
-    
-- name: Display captured logs
-  debug:
-    var: captured_logs
    
 # Update Elasticsearch config file to allow access (to secure Elasticsearch, bind to 'localhost'). 
 
